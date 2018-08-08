@@ -7,13 +7,13 @@ export default [
 	{
 		input: 'src/main.js',
 		output: {
-			name: 'howLongUntilLunch',
+			name: 'jsFormCalculator',
 			file: pkg.browser,
 			format: 'umd'
 		},
 		plugins: [
-			resolve(), // so Rollup can find `ms`
-			commonjs() // so Rollup can convert `ms` to an ES module
+			resolve(), // so Rollup can find `string-calc`
+			commonjs() // so Rollup can convert `string-calc` to an ES module
 		]
 	},
 
@@ -25,7 +25,7 @@ export default [
 	// `file` and `format` for each target)
 	{
 		input: 'src/main.js',
-		external: ['ms'],
+		external: ['@johnrob1880/string-calc'],
 		output: [
 			{ file: pkg.main, format: 'cjs' },
 			{ file: pkg.module, format: 'es' }

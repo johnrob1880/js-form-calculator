@@ -1,18 +1,20 @@
 {
-  "name": "rollup-starter-lib",
+  "name": "@johnrob1880/js-form-calculator",
   "version": "1.0.0",
-  "main": "dist/how-long-till-lunch.cjs.js",
-  "module": "dist/how-long-till-lunch.esm.js",
-  "browser": "dist/how-long-till-lunch.umd.js",
+  "main": "dist/js-form-calculator.cjs.js",
+  "module": "dist/js-form-calculator.esm.js",
+  "browser": "dist/js-form-calculator.umd.js",
   "dependencies": {
-    "ms": "^2.0.0"
+    "@johnrob1880/string-calc": "^1.0.2"
   },
   "devDependencies": {
     "rollup": "^0.63.4",
     "rollup-plugin-commonjs": "^9.1.0",
-    "rollup-plugin-node-resolve": "^3.0.0"
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "standard": "^11.0.1"
   },
   "scripts": {
+    "lint": "standard 'src/*.js'",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "test": "node test/test.js",

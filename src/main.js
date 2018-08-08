@@ -1,12 +1,52 @@
-import ms from 'ms';
-import lunchtime from './lunchtime.js';
-import millisecondsUntil from './millisecondsUntil.js';
+/*
+ * JS Form Calculator
+ * Calculates form objects
+ * https://github.com/johnrob1880/js-form-calculator
+ *
+ * Copyright (c) 2018 John Robinson
+ * Licensed under the MIT license.
+ */
 
-export default function howLongUntilLunch(hours, minutes) {
-	// lunch is at 12.30
-	if (hours === undefined) hours = 12;
-	if (minutes === undefined) minutes = 30;
+import * as calculations from './calculations'
+import { validate } from './validations'
 
-	var millisecondsUntilLunchTime = millisecondsUntil(lunchtime(hours, minutes));
-	return ms(millisecondsUntilLunchTime, { long: true });
+export const validateForm = (form, values) => {
+  return new Promise(function (resolve, reject) {
+    let inputs = (form && form.inputs) || {}
+    let errObj = {}
+    let isValid = true;
+
+    [].forEach.call(Object.keys(inputs), key => {
+      let inp = inputs[key]
+      let errors = validate(inp.validators || [], values[key])
+
+      if (errors && errors.length) {
+        isValid = false
+        errObj[key] = errors
+      }
+    })
+
+    if (!isValid) {
+      reject(errObj)
+    }
+
+    resolve()
+  })
+}
+
+export const calculateForm = (form, values) => {
+  return new Promise((resolve, reject) => {
+    calculations.calculateForm(form, values).then((newValues) => {
+      resolve({
+        values: newValues,
+        isValid: true
+      })
+    }).catch((err) => {
+      resolve({
+        values: values,
+        isValid: false,
+        errors: err.errors || err
+      })
+    })
+  })
 }
