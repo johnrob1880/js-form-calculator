@@ -17,8 +17,6 @@ yarn add @johnrob1880/js-form-calculator
 
 ## Usage
 
-Clone this repository and install its dependencies:
-
 ```js
 import calculateFrom from '@johnrob1880/js-form-calculator'
 
@@ -52,6 +50,49 @@ calculateForm(form, values).then(result => {
 	console.log('error', e)
 	assert.fail('Exception thrown')
 })
+```
+
+## Supported Validators
+
+`req` - required
+
+`str`, `num`, `bool`, `int` - value type
+
+`pos` - positive number
+
+`zpos` - positive number including zero
+
+`neg` - negative number
+
+`gt` - greater than
+
+`gte` - greater than or equal to
+
+`lt` - less than
+
+`lte` - less than or equal to
+
+`btw` - between a min and max value
+
+`in` - a value in a set of values
+
+`date` - a valid date
+
+## Validator options example
+
+```js
+
+// greater than 10
+`gt`: { type: 'number', validators: ['req', 'gt'], vargs: [10] }
+
+// greater than or equal to 10
+`gte`: { type: 'number', validators: ['req', 'gt'], vargs: [10] }
+
+// length between 1 and 10
+`btw`: { type: 'number', validators: ['req', 'btw'], vargs: [1, 10] }
+
+// in a set of values, be sure to pass an array
+`in`: { type: 'number', validators: ['req', 'in'], vargs: [[1, 11]]}
 ```
 
 ## License
