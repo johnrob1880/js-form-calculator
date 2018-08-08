@@ -1,4 +1,3 @@
-
 const INT_PATTERN = '^-?(0|[1-9]\\d*)$';
 const NUMBER_PATTERN = '^-?(0|[1-9]\\d*)(\\.\\d+)?$';
 

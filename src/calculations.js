@@ -3,12 +3,7 @@ import {
   validate,
   validators
 } from './validations'
-
-const readProp = (obj, str) => {
-  return str.split('.').reduce((a, b) => {
-    return a[b]
-  }, obj)
-}
+import readProp from './readProp'
 
 export const calculateForm = (form, values) => {
   return new Promise(function (resolve, reject) {

@@ -1,5 +1,6 @@
 const assert = require('assert')
 const calculate = require('..').calculateForm
+const validateForm = require('..').validateForm
 
 var form = {
   formulas: {
@@ -53,7 +54,9 @@ let values = {
     two: 2
 }
 
-console.log()
+validateForm(form, values).then(result => {
+    console.log('validate form result', JSON.stringify(result))
+})
 
 calculate(form, values).then(form => {
 
@@ -63,7 +66,7 @@ calculate(form, values).then(form => {
     }
     
     assert.equal(form.values.addition, 6)
-    console.log(`addition \u001B[32m✓\u001B[39m 6`, form.values)
+    console.log(`addition \u001B[32m✓\u001B[39m 6`)
 
     assert.equal(form.values.subtraction, 2)
     console.log(`subtraction \u001B[32m✓\u001B[39m 2`)
