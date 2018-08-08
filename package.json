@@ -1,6 +1,6 @@
 {
   "name": "@johnrob1880/js-form-calculator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/js-form-calculator.cjs.js",
   "module": "dist/js-form-calculator.esm.js",
   "browser": "dist/js-form-calculator.umd.js",
